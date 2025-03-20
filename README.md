@@ -207,5 +207,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Acknowledgments
 
 - The AS5048A driver is designed specifically for the Raspberry Pi Pico SDK
-- This driver was developed with the help of Claude Sonet 3.7.
+- This driver was developed with the help of Claude Sonet 3.7 using the linked datasheet as a direct reference.
 - This driver has been tested by a human before release.
