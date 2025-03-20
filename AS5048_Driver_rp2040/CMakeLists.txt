@@ -34,24 +34,29 @@ project(AS5048_Driver_rp2040 C CXX ASM)
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
-
-add_executable(AS5048_Driver_rp2040 AS5048_Driver_rp2040.c )
+add_executable(AS5048_Driver_rp2040 
+    sample-usage.cpp
+    as5048a.cpp
+)
 
 pico_set_program_name(AS5048_Driver_rp2040 "AS5048_Driver_rp2040")
 pico_set_program_version(AS5048_Driver_rp2040 "0.1")
 
-# Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(AS5048_Driver_rp2040 0)
-pico_enable_stdio_usb(AS5048_Driver_rp2040 0)
+# Enable output over USB for debugging
+pico_enable_stdio_uart(AS5048_Driver_rp2040 1)
+pico_enable_stdio_usb(AS5048_Driver_rp2040 1)
 
 # Add the standard library to the build
 target_link_libraries(AS5048_Driver_rp2040
-        pico_stdlib)
+    pico_stdlib
+    hardware_spi
+    hardware_gpio
+    hardware_pwm
+)
 
 # Add the standard include files to the build
 target_include_directories(AS5048_Driver_rp2040 PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}
 )
 
 pico_add_extra_outputs(AS5048_Driver_rp2040)
-
